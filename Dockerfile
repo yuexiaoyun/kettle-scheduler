@@ -36,7 +36,7 @@ FROM maven:3.5.0-jdk-8-alpine as builder
 ADD ./pom.xml pom.xml
 ADD ./src src/
 # package war
-RUN mvn clean package
+RUN mvn clean package -q
 
 FROM base
 COPY --from=builder ./kettle-scheduler.war ${CATALINA_HOME}/webapps/km.war
