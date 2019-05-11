@@ -6,7 +6,7 @@ ENV PDI_RELEASE=8.0 \
     PDI_HOME=/data-integration
 RUN apk add --update wget unzip && \
   mkdir /pentaho && \
-  echo https://downloads.sourceforge.net/project/pentaho/Data%20Integration/${PDI_RELEASE}/pdi-ce-${PDI_VERSION}.zip | xargs wget --progress=dot:giga -qO- -O tmp.zip && \
+  echo https://downloads.sourceforge.net/project/pentaho/Pentaho%20${PDI_RELEASE}/client-tools/pdi-ce-${PDI_VERSION}.zip | xargs wget --progress=dot:giga -qO- -O tmp.zip && \
   unzip -q tmp.zip -d /pentaho && \
   mv /pentaho/data-integration /data-integration && \
   mr -fr /pentaho && \
@@ -30,6 +30,6 @@ RUN   curl -L -o /tmp/mssql-jdbc.jre8.jar "https://github.com/Microsoft/mssql-jd
        && cp /tmp/mssql-jdbc.jre8.jar ${CATALINA_HOME}/lib/mssql-jdbc.jre8.jar \
        && rm -f /tmp/mssql-jdbc.jre8.jar
 
-# ADD ./kettle-scheduler ./webapps/km
-
+# # ADD ./kettle-scheduler ./webapps/km
+# https://nchc.dl.sourceforge.net/project/pentaho/Pentaho%208.0/client-tools/pdi-ce-8.0.0.0-28.zip
 
