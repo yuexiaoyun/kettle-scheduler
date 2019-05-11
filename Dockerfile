@@ -30,3 +30,13 @@ RUN apk add --update curl && curl -L -o /tmp/mysql_connector.tar.gz "https://dev
        && cp /tmp/mssql-jdbc-${MSSQL_JDBC_VERSION}.jre8.jar ${CATALINA_HOME}/lib/ \
        && rm -f /tmp/mssql-jdbc-${MSSQL_JDBC_VERSION}.jre8.jar \
        && apk del curl
+
+FROM maven:3.5.0-jdk-8-alpine as builder
+# add pom.xml and source code
+ADD ./pom.xml pom.xml
+ADD ./src src/
+# package war
+RUN mvn clean package
+
+FROM base
+COPY --from=builder ./kettle-scheduler.war ${CATALINA_HOME}/webapps/km.war
