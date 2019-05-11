@@ -23,7 +23,7 @@ ENV MSSQL_JDBC_VERSION=7.2.2
 # https://github.com/microsoft/mssql-jdbc/releases/download/v7.2.2/mssql-jdbc-7.2.2.jre8.jar
 RUN apk add --update curl && curl -L -o /tmp/mysql_connector.tar.gz "https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-${MYSQL_JDBC_VERSION}.tar.gz" \
        && tar -zxvf /tmp/mysql_connector.tar.gz -C ${CATALINA_HOME}/lib/ "mysql-connector-java-${MYSQL_JDBC_VERSION}/mysql-connector-java-${MYSQL_JDBC_VERSION}.jar" --strip-components 1 \
-       && cp ${CATALINA_HOME}/lib/mysql-connector-java-${MYSQL_JDBC_VERSION}-bin.jar ${PDI_HOME}/lib/mssql-jdbc-${MYSQL_JDBC_VERSION}.jre8.jar \
+       && cp ${CATALINA_HOME}/lib/mysql-connector-java-${MYSQL_JDBC_VERSION}-bin.jar ${PDI_HOME}/lib/ \
        && rm /tmp/mysql_connector.tar.gz \
     && curl -L -o /tmp/mssql-jdbc.jre8.jar "https://github.com/Microsoft/mssql-jdbc/releases/download/v${MSSQL_JDBC_VERSION}/mssql-jdbc-${MSSQL_JDBC_VERSION}.jre8.jar" \
        && cp /tmp/mssql-jdbc.jre8.jar ${PDI_HOME}/lib/mssql-jdbc.jre8.jar \
