@@ -9,7 +9,7 @@ RUN apk add --update wget unzip && \
   echo https://downloads.sourceforge.net/project/pentaho/Pentaho%20${PDI_RELEASE}/client-tools/pdi-ce-${PDI_VERSION}.zip | xargs wget --progress=dot:giga -qO- -O tmp.zip && \
   unzip -q tmp.zip -d /pentaho && \
   mv /pentaho/data-integration /data-integration && \
-  mr -fr /pentaho && \
+  rm -fr /pentaho && \
   rm -f tmp.zip && \
   apk del wget unzip 
 RUN ln ${CATALINA_HOME}/plugins ${CATALINA_HOME}/plugins && \
