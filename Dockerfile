@@ -5,16 +5,16 @@ ENV PDI_RELEASE=8.0 \
     PDI_VERSION=8.0.0.0-28\
     PDI_HOME=/data-integration
 RUN apk add --update wget unzip && \
-  mkdir /pentaho && \
+  mkdir -p /pentaho && \
   echo https://downloads.sourceforge.net/project/pentaho/Pentaho%20${PDI_RELEASE}/client-tools/pdi-ce-${PDI_VERSION}.zip | xargs wget --progress=dot:giga -qO- -O tmp.zip && \
   unzip -q tmp.zip -d /pentaho && \
   mv /pentaho/data-integration /data-integration && \
   rm -fr /pentaho && \
   rm -f tmp.zip && \
   apk del wget unzip 
-RUN ln ${CATALINA_HOME}/plugins ${CATALINA_HOME}/plugins && \
-  ln ${CATALINA_HOME}/system $CATALINA_HOME/system  && \
-  ln ${CATALINA_HOME}/simple-jndi ${CATALINA_HOME}/simple-jndi
+RUN mkdir -p ${CATALINA_HOME}/plugins && ln ${CATALINA_HOME}/plugins ${CATALINA_HOME}/plugins && \
+    mkdir -p ${CATALINA_HOME}/system && ln ${CATALINA_HOME}/system $CATALINA_HOME/system  && \
+    mkdir -p ${CATALINA_HOME}/simple-jndi && ln ${CATALINA_HOME}/simple-jndi ${CATALINA_HOME}/simple-jndi
 
 # Download JDBC
 ENV MYSQL_JDBC_VERSION=8.0.16
