@@ -12,9 +12,9 @@ RUN apk add --update wget unzip && \
   rm -fr /pentaho && \
   rm -f tmp.zip && \
   apk del wget unzip 
-RUN mkdir ${CATALINA_HOME}/plugins && ln ${CATALINA_HOME}/plugins ${CATALINA_HOME}/plugins && \
-    mkdir ${CATALINA_HOME}/system && ln ${CATALINA_HOME}/system $CATALINA_HOME/system  && \
-    mkdir ${CATALINA_HOME}/simple-jndi && ln ${CATALINA_HOME}/simple-jndi ${CATALINA_HOME}/simple-jndi
+RUN mkdir ${CATALINA_HOME}/plugins && ln ${PDI_HOME}/plugins ${CATALINA_HOME}/plugins && \
+    mkdir ${CATALINA_HOME}/system && ln ${PDI_HOME}/system $CATALINA_HOME/system  && \
+    mkdir ${CATALINA_HOME}/simple-jndi && ln ${PDI_HOME}/simple-jndi ${CATALINA_HOME}/simple-jndi
 
 # Download JDBC
 ENV MYSQL_JDBC_VERSION=8.0.16
