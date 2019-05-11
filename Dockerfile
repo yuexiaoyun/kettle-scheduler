@@ -1,8 +1,8 @@
 FROM tomcat:9-jre8-alpine as base
 
 # Download PDI
-ENV PDI_RELEASE=8.0 \
-    PDI_VERSION=8.0.0.0-28\
+ENV PDI_RELEASE=8.2 \
+    PDI_VERSION=8.2.0.0-342\
     PDI_HOME=/data-integration
 RUN apk add --update wget unzip && \
   mkdir -p /pentaho && \
