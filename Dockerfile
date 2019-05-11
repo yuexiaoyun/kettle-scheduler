@@ -1,4 +1,4 @@
-FROM tomcat:9-jre8-alpine
+FROM tomcat:9-jre8-alpine as base
 
 # Download PDI
 ENV PDI_RELEASE=8.0 \
@@ -12,9 +12,9 @@ RUN apk add --update wget unzip && \
   rm -fr /pentaho && \
   rm -f tmp.zip && \
   apk del wget unzip 
-RUN mkdir -p ${CATALINA_HOME}/plugins && ln ${CATALINA_HOME}/plugins ${CATALINA_HOME}/plugins && \
-    mkdir -p ${CATALINA_HOME}/system && ln ${CATALINA_HOME}/system $CATALINA_HOME/system  && \
-    mkdir -p ${CATALINA_HOME}/simple-jndi && ln ${CATALINA_HOME}/simple-jndi ${CATALINA_HOME}/simple-jndi
+RUN mkdir ${CATALINA_HOME}/plugins && ln ${CATALINA_HOME}/plugins ${CATALINA_HOME}/plugins && \
+    mkdir ${CATALINA_HOME}/system && ln ${CATALINA_HOME}/system $CATALINA_HOME/system  && \
+    mkdir ${CATALINA_HOME}/simple-jndi && ln ${CATALINA_HOME}/simple-jndi ${CATALINA_HOME}/simple-jndi
 
 # Download JDBC
 ENV MYSQL_JDBC_VERSION=8.0.16
@@ -29,7 +29,3 @@ RUN   curl -L -o /tmp/mssql-jdbc.jre8.jar "https://github.com/Microsoft/mssql-jd
        && cp /tmp/mssql-jdbc.jre8.jar ${PDI_HOME}/lib/mssql-jdbc.jre8.jar \
        && cp /tmp/mssql-jdbc.jre8.jar ${CATALINA_HOME}/lib/mssql-jdbc.jre8.jar \
        && rm -f /tmp/mssql-jdbc.jre8.jar
-
-# # ADD ./kettle-scheduler ./webapps/km
-# https://nchc.dl.sourceforge.net/project/pentaho/Pentaho%208.0/client-tools/pdi-ce-8.0.0.0-28.zip
-
