@@ -236,8 +236,7 @@ public class KettleInit {
 		}
 
 		System.getProperties().put("KETTLE_HOME", Constant.KETTLE_HOME);
-		System.getProperties().put("KETTLE_PLUGIN_BASE_FOLDERS",
-				Constant.KETTLE_PLUGIN);
+		System.getProperties().put("KETTLE_PLUGIN_BASE_FOLDERS",Constant.KETTLE_PLUGIN);
 		System.getProperties().put("KETTLE_JS_HOME", Constant.KETTLE_SCRIPT);
 		System.getProperties()
 				.put(Constant.INTERNAL_VARIABLE_CLUSTER_SIZE, "1");
