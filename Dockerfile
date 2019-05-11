@@ -1,11 +1,11 @@
 FROM tomcat:9-jre8-alpine
 
-ENV MINOR_VERSION 8.0.0.0-28
+# ENV MINOR_VERSION 8.0.0.0-28
 ENV PENTAHO_HOME /pentaho
 
 RUN apk add --update wget unzip && \
   mkdir ${PENTAHO_HOME} && \
-  echo http://downloads.sourceforge.net/project/pentaho/Data%20Integration/${MAJOR_VERSION}/pdi-ce-${MINOR_VERSION}.zip | xargs wget -qO- -O tmp.zip && \
+  echo https://downloads.sourceforge.net/project/pentaho/Pentaho%208.0/server/pentaho-server-ce-8.0.0.0-28.zip | xargs wget -qO- -O tmp.zip && \
   unzip -q tmp.zip -d ${PENTAHO_HOME} && \
   rm -f tmp.zip && \
   apk del wget unzip
