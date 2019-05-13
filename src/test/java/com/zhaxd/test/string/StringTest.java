@@ -40,11 +40,11 @@ public class StringTest {
 		System.out.println(new Date().getTime());
 	}
 	
-	@Test
-	public void testBR() throws IOException{
-		String readFileToString = FileUtils.readFileToString(new File("/tmp/kettle-master/1/trans@kettle-test-6.2-log/1496459302270.txt"), Constant.DEFAULT_ENCODING);
-		System.out.println(readFileToString);
+	// @Test
+	// public void testBR() throws IOException{
+	// 	String readFileToString = FileUtils.readFileToString(new File("/tmp/kettle-master/1/trans@kettle-test-6.2-log/1496459302270.txt"), Constant.DEFAULT_ENCODING);
+	// 	System.out.println(readFileToString);
 		
-	}
+	// }
 	
 }
